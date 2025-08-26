@@ -1,3 +1,4 @@
+"use client"
 import { LoginState } from "@/types/loginType";
 import { createContext, useState } from "react";
 
@@ -9,5 +10,4 @@ export function LoginProvider({children}: { children: React.ReactNode }) {
     return (<GlobalLoginState.Provider value={{loggedIn, setLoggedIn}}>
             {children}
         </GlobalLoginState.Provider>)
-    
 }
