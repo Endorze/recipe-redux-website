@@ -12,11 +12,11 @@ export const Sidebar = () => {
 
     const containerRef = useRef<HTMLDivElement>(null)
     const blobRef = useRef<HTMLDivElement>(null)
-    const {loggedIn, setLoggedIn} = useLoginState();
+    const {user, setUser} = useLoginState();
 
     function logoutUser(e: React.FormEvent) {
-        if (loggedIn) {
-            setLoggedIn(!loggedIn);
+        if (user) {
+            setUser(null);
         }
     }
 

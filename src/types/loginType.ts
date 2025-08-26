@@ -4,6 +4,6 @@ export type AccountDetails = {
 }
 
 export type LoginState = {
-    loggedIn: boolean;
-    setLoggedIn: (value: boolean) => void;
+    user: AccountDetails | null;
+    setUser: (user: AccountDetails | null) => void;
 }

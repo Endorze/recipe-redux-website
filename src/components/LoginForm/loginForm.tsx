@@ -6,16 +6,17 @@ import { useRouter } from "next/navigation";
 
 
 export default function LoginForm() {
-  const { setLoggedIn } = useLoginState();
+  const { user, setUser } = useLoginState();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
 
   function handleLogin(e: React.FormEvent) {
     e.preventDefault();
+    const loggedInUser = loginUser({username, password})
 
-    if (loginUser({ username, password })) {
-      setLoggedIn(true);
+    if (loggedInUser) {
+      setUser(loggedInUser);
       router.replace("/")
     } else {
       alert("Wrong username or password");
