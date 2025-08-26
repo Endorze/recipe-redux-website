@@ -2,6 +2,8 @@
 import { useEffect, useRef } from "react";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import styles from "./Sidebar.module.css"
+import Link from "next/link";
+import { useLoginState } from "../../hooks/useLoginState";
 
 const MAX_DRAG_FACTOR = 500
 const MIN_DRAG_FACTOR = 120
@@ -10,6 +12,14 @@ export const Sidebar = () => {
 
     const containerRef = useRef<HTMLDivElement>(null)
     const blobRef = useRef<HTMLDivElement>(null)
+    const {loggedIn, setLoggedIn} = useLoginState();
+
+    function logoutUser(e: React.FormEvent) {
+        if (loggedIn) {
+            setLoggedIn(!loggedIn);
+        }
+    }
+
 
     useEffect(() => {
         const mouseMovement = (event: MouseEvent) => {
@@ -36,15 +46,15 @@ export const Sidebar = () => {
 
 
     return (
-        <aside ref={containerRef}  className={`${styles.SidebarContainer} hidden md:block`}>
+        <aside ref={containerRef} className={`${styles.SidebarContainer} hidden md:block`}>
             <div className={styles.Sidebar}>
                 <div className={styles.Content}>
-                    <a href="/">Home</a>
-                    <a href="/profile">My Profile</a>
-                    <a href="/favorites">Favorite Recipes</a>
-                    <a href="/recipes">All Recipes</a>
-                    <a href="#ai">AI Chat</a>
+                    <Link href={"/"} key={"home"}>Home</Link>
+                    <Link href={"/profile"} key={"profile"}>My Profile</Link>
+                    <Link href={"/favorites"} key={"favorites"}>Favorite Recipes</Link>
+                    <Link href={"/recipes"} key={"recipes"}>All Recipes</Link>
                     <a target="_blank" href="/alexander_hallgren_cv.pdf">Resume/CV</a>
+                    <button onClick={logoutUser}>Logout</button>
                     <div className="flex gap-4">
                         <a href="https://www.linkedin.com/in/alexander-hallgren-5a4a501aa/" target="_blank" rel="noopener noreferrer">
                             <FaLinkedin className="text-gray-600 hover:opacity-80" size={30} />
@@ -64,7 +74,6 @@ export const Sidebar = () => {
                     </div>
                 </div>
             </div>
-
         </aside>
     )
 }

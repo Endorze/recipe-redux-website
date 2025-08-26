@@ -53,6 +53,14 @@
     color: white;
 }
 
+.Content button {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: white;
+    text-align: left;
+    cursor: pointer;
+}
+
 .SiderbarBorder {
     position: relative;
     width: var(--collapsedWidth);
