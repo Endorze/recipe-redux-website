@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from "react";
 import { useLoginState } from "../../../hooks/useLoginState";
-import { RecipeGridLayout } from "@/components/RecipeGridLayout/recipeGridLayout";
+import { RecipeSection } from "@/components/RecipeGridLayout/recipeGridLayout";
 
 
 type Meal = {
@@ -35,7 +35,7 @@ export default function Home() {
       <section>
         <p>Hello {user?.username}!</p>
         {/* <RecipeCard /> */}
-        <RecipeGridLayout meals={meals} title="all recipes"/>
+        <RecipeSection meals={meals} title="all recipes"/>
       </section>
     </div>
   );
