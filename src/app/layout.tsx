@@ -4,6 +4,7 @@ import "./globals.css";
 import { Sidebar } from "@/sidebar/sidebar";
 import { GlobalLoginState, LoginProvider } from "@/context/loginContext";
 import { Layout } from "@/Layout/layout";
+import { FavoritesProvider } from "@/context/favoritesContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,9 +34,12 @@ export default function RootLayout({
       >
         <>
           <LoginProvider>
-            <Layout>
-              {children}
-            </Layout>
+            <FavoritesProvider>
+
+              <Layout>
+                {children}
+              </Layout>
+            </FavoritesProvider>
           </LoginProvider>
         </>
       </body>
