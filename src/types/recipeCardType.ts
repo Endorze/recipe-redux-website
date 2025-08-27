@@ -3,4 +3,6 @@ export type RecipeCardType = {
     recipeName: string,
     category: string,
     area: string,
+    strMeal: string,
+    strMealThumb: string,
 }
