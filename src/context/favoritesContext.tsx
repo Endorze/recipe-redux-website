@@ -1,20 +1,29 @@
+// context/favoritesContext.tsx
 "use client";
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { useLoginState } from "../../hooks/useLoginState";
 
 type FavoritesContextType = {
-  favorites: string[];
+  favorites: string[];                      // idMeal[]
   toggleFavorite: (id: string) => void;
   isFavorite: (id: string) => boolean;
 };
 
 const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
 
-export function FavoritesProvider({ children }: { children: ReactNode }) {
+export function FavoritesProvider({ children }: { children: React.ReactNode }) {
+  const { user } = useLoginState();
   const [favorites, setFavorites] = useState<string[]>([]);
 
+  // Seed från inloggad användare (och deduplicera)
+  useEffect(() => {
+    const initial = user?.favoriteMealIds ?? [];
+    setFavorites(Array.from(new Set(initial)));
+  }, [user]);
+
   const toggleFavorite = (id: string) => {
-    setFavorites((prev) =>
-      prev.includes(id) ? prev.filter((f) => f !== id) : [...prev, id]
+    setFavorites(prev =>
+      prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
     );
   };
 
@@ -29,8 +38,6 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
 
 export function useFavorites() {
   const ctx = useContext(FavoritesContext);
-  if (!ctx) {
-    throw new Error("useFavorites must be used inside FavoritesProvider");
-  }
+  if (!ctx) throw new Error("useFavorites must be used inside FavoritesProvider");
   return ctx;
 }

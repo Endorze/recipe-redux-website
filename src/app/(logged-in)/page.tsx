@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useFavorites } from "@/context/favoritesContext";
 import { RecipeSection } from "@/components/RecipeGridLayout/recipeSection";
+import { useLoginState } from "../../../hooks/useLoginState";
 
 type MealSummary = {
   idMeal: string;
@@ -13,6 +14,7 @@ type MealSummary = {
 
 export default function Home() {
   const { favorites } = useFavorites(); // tex ["52772", ...]
+
   const [meals, setMeals] = useState<MealSummary[]>([]);
   const [loading, setLoading] = useState(true);
 
