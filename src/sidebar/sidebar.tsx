@@ -51,7 +51,6 @@ export const Sidebar = () => {
                 <div className={styles.Content}>
                     <Link href={"/"} key={"home"}>Home</Link>
                     <Link href={"/profile"} key={"profile"}>My Profile</Link>
-                    <Link href={"/favorites"} key={"favorites"}>Favorite Recipes</Link>
                     <Link href={"/recipes"} key={"recipes"}>All Recipes</Link>
                     <a target="_blank" href="/alexander_hallgren_cv.pdf">Resume/CV</a>
                     <button onClick={logoutUser}>Logout</button>
@@ -69,7 +68,7 @@ export const Sidebar = () => {
                 </div>
                 <div className={styles.SiderbarBorder}>
                     <div ref={blobRef} className={styles.HamburgerContainer}>
-                        <img className={styles.Blob} src="/images/sidebar_blob.png" />
+                        <img className={styles.Blob} src="/images/terracottablob.png" />
                         <img className="w-[38px] flex justify-center" src="/images/hammburgher.png" />
                     </div>
                 </div>

@@ -2,6 +2,9 @@
 import { useEffect, useState } from "react";
 import { useFavorites } from "@/context/favoritesContext";
 import { RecipeSection } from "@/components/RecipeGridLayout/recipeSection";
+import { useLoginState } from "../../../hooks/useLoginState";
+import Link from "next/link";
+
 
 
 type MealSummary = {
@@ -14,9 +17,9 @@ type MealSummary = {
 
 export default function Home() {
   const { favorites } = useFavorites(); // tex ["52772", ...]
-
   const [meals, setMeals] = useState<MealSummary[]>([]);
   const [loading, setLoading] = useState(true);
+  const { user } = useLoginState();
 
   useEffect(() => {
     let cancelled = false;
@@ -59,16 +62,33 @@ export default function Home() {
       <div className="max-w-4xl mx-auto p-8">
         <h1 className="text-2xl font-semibold mb-2">Favorited Foods</h1>
         <p className="text-gray-600">
-         You have no favorited foods. Go to the "ALL RECIPES" page, press the star on a recipe to add it!
+          You have no favorited foods. Go to the "ALL RECIPES" page, press the star on a recipe to add it!
         </p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen w-full px-6 sm:px-10 py-8">
+    <div className="min-h-screen w-full px-4 sm:px-10 py-8">
       <div className="mx-auto w-full max-w-7xl">
-        <RecipeSection title="Dina favoriter" meals={meals} />
+        <div className="w-full bg-[#FFF9D6] min-h-[200px] mb-6 p-6 md:p-8 rounded-2xl border border-black/5 shadow-sm">
+          <div className="flex justify-between">
+            <h3 className="font-semibold">Hello {user?.username}</h3>
+            <img className="max-w-[128px] opacity-90 rounded-xl hidden md:block" src={"/alexrestaurantlogo.png"} />
+          </div>
+          <div className="flex flex-col gap-2">
+            <h4>Feeling hungry?</h4>
+            <p>Cook up one of your favorites, or browse new recipes today!</p>
+            <Link key={"recipes"}
+              href="/recipes"
+              className="rounded-xl py-2 bg-[#06D6A0] font-bold text-white w-fit px-4 hover:bg-emerald-500"
+              >
+              🍽️ Discover recipes
+              <span className="text-lg"> ➜</span>
+            </Link>
+              </div>
+        </div>
+        <RecipeSection title="Personal favorites" meals={meals} />
       </div>
     </div>
   );
