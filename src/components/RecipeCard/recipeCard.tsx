@@ -41,8 +41,8 @@ export const RecipeCard = ({
             aria-label={isFavorite(idMeal) ? "Remove from Favorites" : "Add to favorites"}>
             <Star
               className="w-6 h-6"
-              fill={isFavorite(idMeal) ? "gold" : "none"}
-              stroke={isFavorite(idMeal) ? "gold" : "currentColor"}
+              fill={isFavorite(idMeal) ? "#E63946" : "none"}
+              stroke={isFavorite(idMeal) ? "#E63946" : "currentColor"}
             />
           </button>
         </div>
@@ -50,7 +50,7 @@ export const RecipeCard = ({
         <p className="text-sm text-gray-600 mt-1">{area} Meal</p>
 
         <div className="flex gap-2 text-xs text-gray-700 mt-2">
-          <span className="rounded-full bg-gray-100 px-2 py-0.5">{category}</span>
+          <span className="rounded-full bg-[#06D6A0] text-white font-semibold px-2 py-0.5">{category}</span>
         </div>
       </div>
     </div>

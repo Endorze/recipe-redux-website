@@ -4,7 +4,7 @@ import { AccountDetails } from "@/types/loginType"
 export const currentAccounts: AccountDetails[] = [
   {
     username: "testuser",
-    password: "1234",
+    password: "testuser1",
     favoriteProtein: "biff",
     favoriteMealIds: [
       "52772",
@@ -22,7 +22,7 @@ export const currentAccounts: AccountDetails[] = [
     ],
   },
   {
-    username: "testuser2",
+    username: "Robert Chamberlain",
     password: "1234",
     favoriteProtein: "biff",
     favoriteMealIds: [
@@ -42,6 +42,25 @@ export const currentAccounts: AccountDetails[] = [
   },
   {
     username: "testuser3",
+    password: "1234",
+    favoriteProtein: "biff",
+    favoriteMealIds: [
+      "52893",
+      "52855",
+      "52888",
+      "52767",
+      "52894",
+      "52928",
+      "52905",
+      "52931",
+      "52961",
+      "52982",
+      "52990",
+      "53007",
+    ],
+  },
+  {
+    username: "Agnes Kareta",
     password: "1234",
     favoriteProtein: "biff",
     favoriteMealIds: [
