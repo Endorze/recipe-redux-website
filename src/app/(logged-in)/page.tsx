@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useFavorites } from "@/context/favoritesContext";
 import { RecipeSection } from "@/components/RecipeGridLayout/recipeSection";
-import { useLoginState } from "../../../hooks/useLoginState";
+
 
 type MealSummary = {
   idMeal: string;
@@ -57,9 +57,9 @@ export default function Home() {
   if (meals.length === 0) {
     return (
       <div className="max-w-4xl mx-auto p-8">
-        <h1 className="text-2xl font-semibold mb-2">Dina favoriter</h1>
+        <h1 className="text-2xl font-semibold mb-2">Favorited Foods</h1>
         <p className="text-gray-600">
-          Du har inga favoritmarkeringar ännu. Gå till recepten och tryck på stjärnan för att lägga till!
+         You have no favorited foods. Go to the "ALL RECIPES" page, press the star on a recipe to add it!
         </p>
       </div>
     );
